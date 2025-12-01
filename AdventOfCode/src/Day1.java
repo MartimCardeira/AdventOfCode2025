@@ -15,15 +15,26 @@ public class Day1 {
             char direction =  myLine.charAt(0);
             String[] splitString = myLine.split("[LR]");
             int diff = Integer.parseInt(splitString[1]);
+            int timesPassedZero = 0;
+            while(diff > 100){
+                diff -= 100;
+                timesPassedZero++;
+            }
             if (direction == 'L') {
-                pos = Math.abs((pos - diff) % 100);
+                if(pos - diff < 0){
+                    timesPassedZero++;
+                    pos = 100 - Math.abs((pos - diff) % 100);
+                }
+                else{
+                    pos -= diff;
+                }
+
             }
             else if (direction == 'R') {
+                if(pos + diff >= 100) timesPassedZero++;
                 pos = Math.abs((pos + diff) % 100);
             }
-            if(pos == 0){
-                numZeroes++;
-            }
+            numZeroes += timesPassedZero;
         }
 
         System.out.println(numZeroes);
