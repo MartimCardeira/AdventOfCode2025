@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class Day1 {
     static void main() throws IOException {
-        FileReader input = new FileReader("AdventOfCode/data/input1");
+        FileReader input = new FileReader("AdventOfCode/data/day1_input");
         BufferedReader bufRead = new BufferedReader(input);
         String myLine = null;
         int pos = 50;
